@@ -517,6 +517,21 @@ VI. Infraestrutura Hídrica`
   }
 </style>
 
+	<style>
+ <html class="min-h-screen bg-gray-900">
+<body class="min-h-screen flex flex-col justify-between bg-gray-900 text-white">
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #111827; /* mesma cor do fundo */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+</style>
 
 <style>
   .dia-simulado {
@@ -721,11 +736,11 @@ card.innerHTML = `
     </div>
 
 <!-- ✅ Botão de filtro por Revisões Pendentes -->
-<div class="text-center mt-4">
-  <button onclick="filtrarRevisoesPendentes()" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded">
+<div class="mt-12 mb-6 flex justify-center gap-4">
+  <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded shadow-md transition">
     🔁 Mostrar Revisões Pendentes
   </button>
-  <button onclick="resetarFiltro()" class="ml-2 bg-gray-400 hover:bg-gray-500 text-white font-semibold px-4 py-2 rounded">
+  <button class="bg-gray-400 hover:bg-gray-500 text-white font-semibold px-4 py-2 rounded shadow-md transition">
     🔄 Mostrar Todos os Dias
   </button>
 </div>
