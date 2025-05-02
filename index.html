@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1f2937" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512-2.png" />
+
+  <title>Cronograma CAESB</title>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registrado:', reg))
+        .catch(err => console.error('Erro no Service Worker:', err));
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 transition-colors duration-300">
+  <!-- AQUI você cola o conteúdo do cronograma -->
+
+
+<script>
+  // Conteúdo original do arquivo conteudos_56_dias.js aqui
+  const conteudos = [
+  `<strong>📌 Tema Principal:</strong> Português + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Planejamento de projetos e obras
+- Compreensão e Interpretação de Textos
+- Programação e Controle de Obras
+- Estudos Preliminares de Projetos
+<br><strong>✅ Prática:</strong> Resolver 15 questões (10 português, 5 engenharia)`,
+  `<strong>📌 Tema Principal:</strong> Português + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Tipos e Gêneros Textuais
+Coesão textual (4.1 e 4.2)
+<br><strong>🗓️</strong> Inserir no Dia 2 ou Dia 4
+<br><strong>💡</strong> Associar aos gêneros textuais ou ortografia. Trabalhar referenciação, conectores e tempos verbais com exemplos práticos de ligação entre frases e parágrafos.
+- Viabilidade Técnico, Físico-Financeira e Econômica
+- Terraplenagem e Locação da Obra
+<br><strong>✅ Prática:</strong> Resolver 15 questões (10 português, 5 engenharia)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 1`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Conjuntos Numéricos
+- Canteiro de Obras
+- Segurança e higiene do trabalho
+- Fundações e Escavações
+<br><strong>✅ Prática:</strong> Resolver 15 questões (10 matemática, 5 engenharia)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 2`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+Conhecimentos do DF / PDPM
+<br><strong>🗓️</strong> Inserir no Dia 54
+<br><strong>💡</strong> Adicionar informações sobre realidade social, estrutura política e o Plano Distrital de Políticas para Mulheres.
+- Sistema Legal de Medidas
+- Contenção de Taludes e Escoramentos
+- Estruturas de Concreto, Madeira e Metálicas
+<br><strong>✅ Prática:</strong> Resolver 15 questões (10 matemática, 5 engenharia)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 3`,
+  `<strong>📌 Tema Principal:</strong> Informática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+Classes de palavras (5.1)
+<br><strong>🗓️</strong> Inserir no Dia 5 ou Dia 6
+<br><strong>💡</strong> Integrar à estrutura morfossintática. Incluir exercícios de identificação de classes gramaticais como substantivos, pronomes, verbos e adjetivos.
+- Conceitos de Internet e Intranet
+- Formas e Armação
+- Alvenaria Estrutural e Pré-moldados
+<br><strong>✅ Prática:</strong> Resolver 15 questões (10 informática, 5 engenharia)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 4`,
+  `<strong>📌 Tema Principal:</strong> Informática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Ferramentas de Navegação e Correio Eletrônico
+- Instalações Prediais: Elétricas, Hidráulicas, de Esgoto
+- Pisos, Revestimentos e Esquadrias
+<br><strong>✅ Prática:</strong> Resolver 15 questões (10 informática, 5 engenharia)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 5`,
+  `<strong>📌 Tema Principal:</strong> Revisão da Semana 1
+<br><strong>📘 Conteúdos:</strong>
+- Revisão geral dos dias 1 a 6
+- Português, Matemática, Informática e Projetos de Engenharia
+<br><strong>✅ Prática:</strong> Resolver 25 a 30 questões (misturadas)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 6 + Revisão 7d do Dia 1`,
+  `<strong>📌 Tema Principal:</strong> Português + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Ortografia Oficial
+- Alvenarias e Revestimentos
+- Esquadrias e Forros
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 7 + Revisão 7d do Dia 1`,
+  `<strong>📌 Tema Principal:</strong> Português + Obras de Saneamento
+<br><strong>📘 Conteúdos:</strong>
+- Acentuação Gráfica
+- Sistemas de Abastecimento de Água
+- Reservação e Transporte
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 8`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Razões e Proporções
+- Pisos e Coberturas
+- Impermeabilização
+Progressões aritméticas e geométricas
+<br><strong>🗓️</strong> Inserir no Dia 10 ou Dia 12
+<br><strong>💡</strong> Complementar temas de funções ou sistemas lineares. Trazer exemplos de PA, PG e fórmulas de soma e termos gerais.
+
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 9`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Porcentagem
+- Noções de CAD (projeto assistido por computador)
+- Aglomerantes e Agregados
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 10`,
+  `<strong>📌 Tema Principal:</strong> Informática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+Decreto nº 45.539/2024 (regulamenta a Lei 13.303/2016 no DF)
+<br><strong>🗓️</strong> Inserir no Dia 53
+<br><strong>💡</strong> Incluir como continuação prática da Lei das Estatais, contextualizando com exemplos da realidade da CAESB no DF.
+- Conceitos de Hardware e Software
+- Materiais Betuminosos
+- Propriedades Físicas e Mecânicas
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 11`,
+  `<strong>📌 Tema Principal:</strong> Informática + Engenharia Civil
+<br><strong>📘 Conteúdos:</strong>
+- Sistemas Operacionais (Windows)
+- Ensaios de Materiais
+- Sistemas Construtivos
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 12`,
+  `<strong>📌 Tema Principal:</strong> Revisão Geral da Semana 2
+<br><strong>📘 Conteúdos:</strong>
+- Conteúdos dos Dias 8 a 13: Ortografia, Proporção, Informática, Alvenaria, Materiais
+<br><strong>✅ Prática:</strong> Resolver 25 a 30 questões intercaladas (gerais e específicos)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 13 + Revisão 7d do Dia 7 + Revisão 14d do Dia 1`,
+  `<strong>📌 Tema Principal:</strong> Português + Mecânica dos Solos
+<br><strong>📘 Conteúdos:</strong>
+- Análise estrutural
+- Emprego do Hífen
+- Origem e Formação dos Solos
+- Processos Erosivos
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 14`,
+  `<strong>📌 Tema Principal:</strong> Português + Mecânica dos Solos
+<br><strong>📘 Conteúdos:</strong>
+- Uso de Crase
+- Índices Físicos dos Solos
+- Características e Propriedades
+Dimensionamento de estruturas em concreto: , destacando pilares, vigas, lajes e tipos de armaduras.
+
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 15`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Mecânica dos Solos
+<br><strong>📘 Conteúdos:</strong>
+- Equações e Inequações
+Planilhas eletrônicas
+<br><strong>🗓️</strong> Inserir no Dia 17 ou Dia 19
+<br><strong>💡</strong> Incluir uso de Excel e Google Sheets, noções de célula, fórmulas simples (SOMA, MÉDIA), e recursos básicos.
+- Pressões nos Solos
+- Prospecção Geotécnica
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 16 + Revisão 7d do Dia 10 + Revisão 14d do Dia 3`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Mecânica dos Solos
+<br><strong>📘 Conteúdos:</strong>
+Lógica sentencial / proposicional (tabelas-verdade, equivalências)
+<br><strong>🗓️</strong> Inserir no Dia 14 ou Dia 15
+<br><strong>💡</strong> Trabalhar proposições simples e compostas, conectivos lógicos e tabelas-verdade, especialmente com foco em Cebraspe.
+- Sistema Métrico Decimal
+- Permeabilidade dos Solos
+- Percolação nos Solos
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 17`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Mecânica dos Solos
+<br><strong>📘 Conteúdos:</strong>
+Segurança na internet (vírus, malware, phishing etc.)
+<br><strong>🗓️</strong> Inserir no Dia 19 ou Dia 20
+<br><strong>💡</strong> Complementar os temas de informática com ameaças digitais comuns e boas práticas de segurança, como autenticação e backups.
+- Regra de Três e Proporcionalidade
+- Compactação, Compressibilidade e Adensamento
+- Estimativa de Recalques
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 18`,
+  `<strong>📌 Tema Principal:</strong> Informática + Mecânica dos Solos
+<br><strong>📘 Conteúdos:</strong>
+- Patologia de obras
+- Aplicativos de Escritório (Word, Excel)
+- Resistência dos Solos ao Cisalhamento
+- Empuxos de Terra
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 19`,
+  `<strong>📌 Tema Principal:</strong> Informática + Mecânica dos Solos
+<br><strong>📘 Conteúdos:</strong>
+- Segurança Digital
+- Estabilidade de Taludes
+- Fundações Superficiais e Profundas
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 20 + Revisão 7d do Dia 14 + Revisão 14d do Dia 7`,
+  `<strong>📌 Tema Principal:</strong> Português + Obras de Saneamento
+<br><strong>📘 Conteúdos:</strong>
+- Pronomes Pessoais e Possessivos
+- Sistemas de Esgotamento Sanitário
+- Coleta, Tratamento e Lançamento
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 21 + Revisão 21d do Dia 1`,
+  `<strong>📌 Tema Principal:</strong> Português + Obras de Saneamento
+<br><strong>📘 Conteúdos:</strong>
+- Pronomes de Tratamento e Emprego Correto
+- Coleta e Disposição de Resíduos Sólidos
+- Drenagem Urbana
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 22`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Obras Hídricas
+<br><strong>📘 Conteúdos:</strong>
+- Múltiplos e Divisores
+- Estruturas Hidráulicas: Barragens e Soleiras
+- Órgãos Extravasores e Tomadas d’Água
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 23`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Obras Hídricas
+<br><strong>📘 Conteúdos:</strong>
+- MDC e MMC
+- Canais, Condutos sob Pressão, Túneis e Bueiros
+- Seções Típicas e Pré-Dimensionamento
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 24`,
+  `<strong>📌 Tema Principal:</strong> Informática + Obras Hídricas
+<br><strong>📘 Conteúdos:</strong>
+- Redes de Computadores (LAN, WAN)
+- Aproveitamento Hidrelétrico
+- Estruturas Componentes e Turbinas
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 25`,
+  `<strong>📌 Tema Principal:</strong> Informática + Obras Hídricas
+<br><strong>📘 Conteúdos:</strong>
+- Backup e Armazenamento em Nuvem
+- Geradores, Vantagens e Desvantagens das Fontes de Energia
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 26 + Revisão 7d do Dia 20 + Revisão 14d do Dia 10 + Revisão 21d do Dia 3`,
+  `<strong>📌 Tema Principal:</strong> Português + Infraestrutura Hídrica
+<br><strong>📘 Conteúdos:</strong>
+- Verbos: Vozes Verbais (voz ativa, passiva, reflexiva)
+- Adutoras de Água Bruta (VI.1)
+- Sistemas de Irrigação (VI.2)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 27`,
+  `<strong>📌 Tema Principal:</strong> Português + Infraestrutura Hídrica
+<br><strong>📘 Conteúdos:</strong>
+- Verbos: Modos e Tempos
+- Aproveitamentos Hidrelétricos (VI.3)
+- Reservatórios de Controle de Cheias (VI.4)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 28`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Resistência dos Materiais
+<br><strong>📘 Conteúdos:</strong>
+- Números Decimais
+- Deformações e Análise de Tensões (7.1)
+- Flexão Simples e Composta (7.2)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 29`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Resistência dos Materiais
+<br><strong>📘 Conteúdos:</strong>
+- Frações e Operações
+- Torção, Cisalhamento e Flambagem (7.2)
+- Esforços em uma Seção (7.3.1)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 30 + Revisão 7d do Dia 24 + Revisão 14d do Dia 17`,
+  `<strong>📌 Tema Principal:</strong> Informática + Resistência dos Materiais
+<br><strong>📘 Conteúdos:</strong>
+- Dispositivos de Entrada e Saída
+- Diagrama de Esforços Solicitantes (7.4)
+- Vigas Simples e Gerber (7.5.1)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 31`,
+  `<strong>📌 Tema Principal:</strong> Informática + Resistência dos Materiais
+<br><strong>📘 Conteúdos:</strong>
+- Conceito de Rede Local (LAN)
+- Estruturas Isostáticas e Hiperestáticas (7.5, 7.6)
+- Método dos Esforços e Deslocamentos (7.6.1)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 32`,
+  `<strong>📌 Tema Principal:</strong> Revisão Geral da Semana
+<br><strong>📘 Conteúdos:</strong>
+- Revisão dos temas dos Dias 28 a 33
+- Verbos, Frações, Materiais, Hidráulica, Estruturas
+<br><strong>✅ Prática:</strong> Resolver 25 a 30 questões intercaladas (gerais e específicos)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 33 + Revisão 7d do Dia 27 + Revisão 14d do Dia 20 + Revisão 21d do Dia 13`,
+  `<strong>📌 Tema Principal:</strong> Português + Engenharia de Custos
+<br><strong>📘 Conteúdos:</strong>
+Resolução nº 14/2011 (ADASA)
+<br><strong>🗓️</strong> Inserir no Dia 50 ou Dia 51
+<br><strong>💡</strong> Posicionar entre o estudo da Lei 11.445 e o Regulamento de Licitações. Destacar condições de prestação de serviços de água e esgoto no DF.
+- Concordância Nominal (regras gerais)
+- Levantamento de Quantitativos (10.1)
+- Orçamento Analítico e Sintético (10.2)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 34`,
+  `<strong>📌 Tema Principal:</strong> Português + Engenharia de Custos
+<br><strong>📘 Conteúdos:</strong>
+- Concordância Verbal
+- Composição Analítica de Serviços (10.3)
+- Cronograma Físico-Financeiro (10.4)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 35`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Engenharia de Custos
+<br><strong>📘 Conteúdos:</strong>
+- Porcentagem Aplicada
+- Cálculo de BDI (10.5)
+- Encargos Sociais e Atualização de Custos (10.6, 10.7)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 36 + Revisão 7d do Dia 30 + Revisão 14d do Dia 23 + Revisão 21d do Dia 16`,
+  `<strong>📌 Tema Principal:</strong> Português + Engenharia Legal
+<br><strong>📘 Conteúdos:</strong>
+- Emprego dos Porquês
+- Engenharia de Avaliações (9.1)
+- Métodos, Depreciação e Desapropriações (9.1.1)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 37`,
+  `<strong>📌 Tema Principal:</strong> Português + Engenharia Legal
+<br><strong>📘 Conteúdos:</strong>
+- Pontuação: vírgula, ponto e ponto e vírgula
+- Ensaios de Recebimento de Obras (9.2.1)
+- Medições, Fatura e Reajuste (9.2.2)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 38`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Engenharia Legal
+<br><strong>📘 Conteúdos:</strong>
+- Regra de Três Composta
+- Controle da Execução de Obras (9.2.3)
+- Análise de Documentação Técnica (9.2.4)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 39`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Patologia das Obras
+<br><strong>📘 Conteúdos:</strong>
+- Média, Moda e Mediana
+- Patologia em Edificações (11.1)
+- Patologia em Obras de Terra (11.2)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 40 + Revisão 7d do Dia 34 + Revisão 14d do Dia 27`,
+  `<strong>📌 Tema Principal:</strong> Informática + Patologia das Obras
+<br><strong>📘 Conteúdos:</strong>
+- Gerenciamento de Arquivos e Pastas
+- Patologia em Obras Hídricas (11.3)
+- Correlação com Materiais e Estruturas
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 41`,
+  `<strong>📌 Tema Principal:</strong> Informática + Obras de Saneamento
+<br><strong>📘 Conteúdos:</strong>
+- Sistemas de Backup e Segurança
+- Marco Regulatório do Saneamento (II.5)
+- Estudos de Viabilidade em Saneamento (II.6)
+<br><strong>✅ Prática:</strong> Resolver 10 questões de informática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 42`,
+  `<strong>📌 Tema Principal:</strong> Revisão Geral da Semana
+<br><strong>📘 Conteúdos:</strong>
+- Revisar Dias 38 a 43
+- Engenharia Legal, Patologia, Saneamento, Português
+<br><strong>✅ Prática:</strong> Resolver 25 a 30 questões (gerais e específicos)
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 43 + Revisão 7d do Dia 37 + Revisão 14d do Dia 30 + Revisão 21d do Dia 23`,
+  `<strong>📌 Tema Principal:</strong> Português + Sistemas de Esgoto
+<br><strong>📘 Conteúdos:</strong>
+- Orações Coordenadas
+- Emissários Interceptores e Coletores (V.1)
+- Redes e Estações Elevatórias
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 44`,
+  `<strong>📌 Tema Principal:</strong> Português + Sistemas de Esgoto
+<br><strong>📘 Conteúdos:</strong>
+- Orações Subordinadas
+- Características Físico-Químicas e Bacteriológicas dos Efluentes (V.1)
+- Hidráulica de Coleta de Esgoto
+<br><strong>✅ Prática:</strong> Resolver 10 questões de português e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 45`,
+  `<strong>📌 Tema Principal:</strong> Matemática + Sistemas de Esgoto
+<br><strong>📘 Conteúdos:</strong>
+- Sistemas Lineares
+- Tipos de Tubulações, Dimensionamento, Captação e Fluxo (V.1)
+- Noções de Projetos de Esgotamento
+<br><strong>✅ Prática:</strong> Resolver 10 questões de matemática e 5 de engenharia
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 46 + Revisão 7d do Dia 40 + Revisão 14d do Dia 33 + Revisão 21d do Dia 26
+
+
+📚 APÊNDICE – ÍNDICE DOS CÓDIGOS DE CONTEÚDO
+Exemplo: (2.4) = Engenharia Civil, item 2.4 – Fundações
+(VI.3) = Infraestrutura Hídrica, item 3 – Aproveitamentos Hidrelétricos
+
+I. Engenharia Civil:
+  1. Planejamento e Controle de Obras
+  2. Projeto e Execução de Edificações
+  3. Hidráulica e Saneamento
+  4. Materiais de Construção
+  5. Mecânica dos Solos
+  6. Barragens e Hidrelétricas
+  7. Resistência dos Materiais
+  8. Estruturas de Concreto
+  9. Engenharia Legal
+ 10. Engenharia de Custos
+ 11. Patologia das Obras
+
+II. Obras de Saneamento Básico
+III. Obras Hídricas
+IV. Sistemas Urbanos de Água
+V. Sistemas de Esgotos
+VI. Infraestrutura Hídrica
+
+
+CRONOGRAMA DE ESTUDOS – DIAS 48 A 56 (LEGISLAÇÕES + LODF + REVISÃO FINAL)
+Fechamento proporcional ao cronograma de 90 dias com inclusão especial da LODF`,
+  `<strong>📌 Tema Principal:</strong> Código de Ética e Conduta da CAESB (Parte 1)
+<br><strong>📘 Conteúdos:</strong>
+- Princípios fundamentais da conduta profissional
+- Regras gerais de comportamento ético
+- Direitos e deveres dos empregados
+<br><strong>✅ Prática:</strong> Leitura integral do Código de Ética + 10 questões de fixação
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 47`,
+  `<strong>📌 Tema Principal:</strong> Código de Ética e Conduta da CAESB (Parte 2) + Questões
+<br><strong>📘 Conteúdos:</strong>
+- Situações práticas, vedações e penalidades
+- Responsabilidade dos gestores e canais de denúncia
+<br><strong>✅ Prática:</strong> Resolver 20 questões intercaladas com simulado temático
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 48`,
+  `<strong>📌 Tema Principal:</strong> Lei 11.445/2007 + Lei 14.026/2020 (Marco do Saneamento)
+<br><strong>📘 Conteúdos:</strong>
+- Princípios, objetivos, organização e titularidade
+- Prestação regionalizada, metas e contratos
+<br><strong>✅ Prática:</strong> Estudo dirigido com leitura da lei + 10 questões do Cebraspe
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 49`,
+  `<strong>📌 Tema Principal:</strong> Regulamento de Licitações e Contratações da CAESB
+<br><strong>📘 Conteúdos:</strong>
+- Modalidades, critérios de julgamento, sanções
+- Contratos, aditivos, gestão contratual
+<br><strong>✅ Prática:</strong> Leitura + resolução de 10 questões práticas baseadas na norma
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 50 + Revisão 7d do Dia 44`,
+  `<strong>📌 Tema Principal:</strong> LODF – Lei Orgânica do Distrito Federal (inclusão especial)
+<br><strong>📘 Conteúdos:</strong>
+- Organização político-administrativa do DF
+- Função social da propriedade urbana e competência legislativa
+- Direitos individuais e coletivos
+<br><strong>✅ Prática:</strong> Leitura orientada + 10 questões de provas anteriores
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 51`,
+  `<strong>📌 Tema Principal:</strong> Lei Maria da Penha + Lei das Estatais (Lei 13.303/2016)
+<br><strong>📘 Conteúdos:</strong>
+- Ciclo da violência, medidas protetivas e competências da autoridade policial
+- Licitações, contratos e governança das estatais
+<br><strong>✅ Prática:</strong> Estudo comparado + 10 questões intercaladas
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 52`,
+  `<strong>📌 Tema Principal:</strong> Legislação Ambiental + Conhecimentos sobre o DF
+<br><strong>📘 Conteúdos:</strong>
+- Lei 9.605/98 + Política Nacional do Meio Ambiente
+- Plano Distrital para Mulheres, Saúde Pública, Estrutura do GDF
+<br><strong>✅ Prática:</strong> Leitura comentada + 10 questões integradas
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 53 + Revisão 14d do Dia 40`,
+  `<strong>📌 Tema Principal:</strong> Revisão Geral Final
+<br><strong>📘 Conteúdos:</strong>
+- Ética, Marco Legal, LODF, Ambiental, DF
+- Quadros-resumo e mapas mentais
+<br><strong>✅ Prática:</strong> Revisar anotações + responder 20 questões simuladas
+<br><strong>🔁 Revisões:</strong> Revisar conteúdo do Dia 54 + Revisão 21d do Dia 34`,
+  `<strong>📌 Tema Principal:</strong> Simulado Final + Checklist
+<br><strong>📘 Conteúdos:</strong>
+- Simulado com 30 a 40 questões intercaladas (legislação + específicos + português e matemática)
+<br><strong>✅ Prática:</strong> Checklist de domínio por tema + correção comentada
+<br><strong>🔁 Revisões:</strong> Revisão livre conforme desempenho
+
+
+
+
+📚 APÊNDICE – ÍNDICE DOS CÓDIGOS DE CONTEÚDO
+Exemplo: (2.4) = Engenharia Civil, item 2.4 – Fundações
+(VI.3) = Infraestrutura Hídrica, item 3 – Aproveitamentos Hidrelétricos
+
+I. Engenharia Civil:
+  1. Planejamento e Controle de Obras
+  2. Projeto e Execução de Edificações
+  3. Hidráulica e Saneamento
+  4. Materiais de Construção
+  5. Mecânica dos Solos
+  6. Barragens e Hidrelétricas
+  7. Resistência dos Materiais
+  8. Estruturas de Concreto
+  9. Engenharia Legal
+ 10. Engenharia de Custos
+ 11. Patologia das Obras
+
+II. Obras de Saneamento Básico
+III. Obras Hídricas
+IV. Sistemas Urbanos de Água
+V. Sistemas de Esgotos
+VI. Infraestrutura Hídrica`
+
+  ];
+
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto Caesb - Cronograma</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+
+<style>
+  .dia-simulado {
+    background-color: #bfdbfe; /* azul claro */
+    border: 2px solid #60a5fa;
+    animation: pulse-simulado 2s infinite;
+  }
+
+  @keyframes pulse-simulado {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+</style>
+
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Opera */
+  }
+</style>
+
+<style>
+  .dia-pendente {
+    border: 2px dashed #facc15; /* amarelo */
+    animation: pulse-pendente 1.5s infinite;
+  }
+
+  @keyframes pulse-pendente {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+</style>
+
+
+<style>
+  .modo-coluna {
+    flex-direction: column !important;
+    flex-wrap: wrap;
+    max-height: none;
+    overflow-y: auto;
+    gap: 1rem;
+  }
+
+  .card-animado {
+    animation: fadeInUp 0.4s ease;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<style>
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes fadeIn {
+    from { background-color: rgba(0,0,0,0); }
+    to { background-color: rgba(0,0,0,0.5); }
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+</style>
+
+</head>
+<body class="transition-colors duration-300">
+
+  <!-- Aviso do tempo até a prova -->
+  <div class="bg-indigo-700 text-white text-center py-4 text-lg font-semibold" id="contador-prova">
+    Faltam X dias para a sua prova
+  </div>
+
+  <!-- Header -->
+  <header class="relative bg-gray-800 text-white px-6 py-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+
+      <div class="flex items-center space-x-4">
+        <img src="data:image/png;base64,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" 
+     alt="Logo" class="w-20 h-20 mx-auto my-4" />
+
+        <div>
+          <h1 class="text-4xl font-bold">Projeto Caesb</h1>
+
+          <p class="text-lg mt-2">Cronograma de estudos</p>
+
+<!-- ✅ Progresso de Estudos -->
+<div id="progresso-estudos" class="text-center text-white font-semibold mb-4">
+  Progresso: <span id="progresso-contador">0</span>/56 dias concluídos
+</div>
+        </div>
+      </div>
+      <div class="mt-8 md:mt-0">
+        <img src="https://via.placeholder.com/300x200" alt="Imagem" class="rounded-lg shadow-lg">
+      </div>
+    </div>
+    <div class="text-center text-white font-semibold mt-6 text-lg" id="progresso-geral"></div>
+    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500 rounded-full opacity-30 transform translate-x-1/2 -translate-y-1/2"></div>
+  </header>
+
+  <!-- Dias de estudo -->
+  <section class="bg-gray-900 text-white px-6 py-16">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8">Dias de estudo</h2>
+
+<div class="mb-6">
+<select onchange="filtrarPorTema(this.value)" class="text-black p-2 rounded">
+  <option value="">Todos os temas</option>
+
+  <!-- 📚 Disciplinas Básicas -->
+  <optgroup label="Conhecimentos Gerais">
+    <option value="Português">Português</option>
+    <option value="Matemática">Matemática</option>
+    <option value="Informática">Informática</option>
+    <option value="Ética">Ética</option>
+    <option value="Distrito Federal">Distrito Federal</option>
+  </optgroup>
+
+  <!-- ⚖️ Legislação -->
+  <optgroup label="Legislação">
+    <option value="Legislação">Legislação Geral</option>
+    <option value="LODF">LODF</option>
+    <option value="Licitações">Licitações</option>
+    <option value="Saneamento">Saneamento</option>
+  </optgroup>
+
+  <!-- 🏗️ Engenharia e Infraestrutura -->
+  <optgroup label="Engenharia e Infraestrutura">
+    <option value="Engenharia Civil">Engenharia Civil</option>
+    <option value="Obras de Saneamento">Obras de Saneamento</option>
+    <option value="Obras Hídricas">Obras Hídricas</option>
+    <option value="Sistemas de Abastecimento">Sistemas de Abastecimento</option>
+    <option value="Sistemas de Esgoto">Sistemas de Esgoto</option>
+    <option value="Infraestrutura Hídrica">Infraestrutura Hídrica</option>
+  </optgroup>
+</select>
+
+</div>
+
+      <div class="relative">
+        <button onclick="scrollContainer(-1)" class="absolute top-1/2 -translate-y-1/2 left-2 z-10 w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-indigo-600 rounded-full shadow-md transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div id="container-dias" class="flex flex-nowrap space-x-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 py-2 w-full">
+
+
+          <script>
+           const container = document.currentScript.parentElement;
+
+;
+
+for (let i = 1; i <= 56; i++) {
+  const card = document.createElement('div');
+  card.id = `dia-${i}`;
+  card.className = "relative min-w-[250px] h-[200px] bg-gray-800 hover:bg-indigo-600 transition transform hover:scale-105 rounded-xl shadow-md p-6 flex-shrink-0 cursor-pointer";
+  card.setAttribute('onclick', `mostrarConteudo(${i})`);
+
+const conteudo = conteudos[i - 1];
+card.setAttribute("data-tema", conteudo.toLowerCase()); // adiciona o tema como atributo
+card.setAttribute("data-dia", i);
+
+card.innerHTML = `
+  <div class="absolute top-2 right-2 hidden text-green-500 text-xl" id="check-${i}">✅</div>
+  <h4 class="text-xl font-semibold">Dia ${String(i).padStart(2, '0')}</h4>
+  <p class="text-sm mt-2">📘 Clique para ver o conteúdo completo</p>
+`;
+
+
+  container.appendChild(card);
+}
+
+          </script>
+        </div>
+
+        <button onclick="scrollContainer(1)" class="absolute top-1/2 -translate-y-1/2 right-2 z-10 w-10 h-10 flex items-center justify-center bg-gray-700 hover:bg-indigo-600 rounded-full shadow-md transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+<!-- ✅ Botão de filtro por Revisões Pendentes -->
+<div class="text-center mt-4">
+  <button onclick="filtrarRevisoesPendentes()" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded">
+    🔁 Mostrar Revisões Pendentes
+  </button>
+  <button onclick="resetarFiltro()" class="ml-2 bg-gray-400 hover:bg-gray-500 text-white font-semibold px-4 py-2 rounded">
+    🔄 Mostrar Todos os Dias
+  </button>
+</div>
+
+  </section>
+
+  <!-- Overlay -->
+  <div id="overlay-card" class="fixed inset-0 bg-black bg-opacity-60 hidden z-50">
+    <div class="flex items-center justify-center w-full h-full">
+      <div id="card-expandido" class="relative bg-white text-gray-900 rounded-2xl shadow-2xl max-w-xl w-[90%] p-8">
+        <button onclick="fecharCard()" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 text-xl font-bold">✕</button>
+        <h3 id="titulo-expandido" class="text-2xl font-bold mb-4"></h3>
+        <p class="text-base leading-relaxed mb-6">Conteúdo detalhado será exibido aqui com base no tema escolhido.</p>
+
+<!-- ✅ Checklist Inteligente por Dia -->
+<div id="checklist-diario" class="mt-4 space-y-2 text-gray-900">
+  <label class="flex items-center space-x-2">
+    <input type="checkbox" id="check-leitura" class="accent-green-600">
+    <span>✔ Li o conteúdo</span>
+  </label>
+  <label class="flex items-center space-x-2">
+    <input type="checkbox" id="check-questoes" class="accent-green-600">
+    <span>✔ Resolvi questões</span>
+  </label>
+  <label class="flex items-center space-x-2">
+    <input type="checkbox" id="check-revisao" class="accent-green-600">
+    <span>✔ Fiz revisão</span>
+  </label>
+  <textarea id="notas-dia" rows="3" class="w-full p-2 rounded border mt-2" placeholder="📝 Notas pessoais..."></textarea>
+</div>
+
+        <button id="botao-realizado" onclick="marcarComoRealizado()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow transition">
+          ✔ Marcar como realizado
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const dataProva = new Date("2025-06-22");
+    const hoje = new Date();
+    const diasRestantes = Math.floor((dataProva - hoje) / (1000 * 60 * 60 * 24));
+    const diaHoje = 56 - diasRestantes;
+    const contador = document.getElementById("contador-prova");
+    contador.textContent = `Faltam ${diasRestantes} dias para a sua prova`;
+
+    if (diaHoje >= 1 && diaHoje <= 56) {
+     window.addEventListener('load', () => {
+  const card = document.getElementById(`dia-${diaHoje}`);
+  const container = document.getElementById("container-dias");
+  if (card && container) {
+    card.classList.add("bg-blue-600", "text-white", "shadow-xl", "scale-105");
+    const cardOffset = card.offsetLeft - container.offsetWidth / 2 + card.offsetWidth / 2;
+    container.scrollLeft = cardOffset;
+  }
+  atualizarProgresso();
+  marcarCardsConcluidos();
+  destacarDiasAtrasados();
+  destacarRevisoesAgendadas();
+});
+
+
+    }
+
+    function scrollContainer(dir) {
+      document.getElementById("container-dias").scrollBy({
+        left: dir * 300,
+        behavior: 'smooth'
+      });
+    }
+
+    let diaAtualExpandido = null;
+
+function filtrarPorTema(tema) {
+  const termo = tema.toLowerCase();
+  const container = document.getElementById("container-dias");
+
+  let algumVisivel = false;
+
+  for (let i = 1; i <= 56; i++) {
+    const card = document.getElementById(`dia-${i}`);
+    const temasDoCard = card.getAttribute("data-tema") || "";
+    const deveMostrar = !termo || temasDoCard.includes(termo);
+
+    if (deveMostrar) {
+      card.classList.remove('hidden');
+      card.classList.add('card-animado');
+      algumVisivel = true;
+    } else {
+      card.classList.add('hidden');
+      card.classList.remove('card-animado');
+    }
+  }
+
+  // Troca o layout se houver filtro
+  if (termo && algumVisivel) {
+    container.classList.add('modo-coluna');
+  } else {
+    container.classList.remove('modo-coluna');
+  }
+}
+
+
+function mostrarConteudo(dia) {
+  diaAtualExpandido = dia;
+
+	carregarChecklist(dia);
+
+	document.getElementById('check-leitura').onchange = () => salvarChecklist(dia);
+	document.getElementById('check-questoes').onchange = () => salvarChecklist(dia);
+	document.getElementById('check-revisao').onchange = () => salvarChecklist(dia);
+	document.getElementById('notas-dia').oninput = () => salvarChecklist(dia);
+
+
+  document.getElementById('overlay-card').classList.remove('hidden');
+  document.getElementById('titulo-expandido').textContent = `Dia ${String(dia).padStart(2, '0')}`;
+  document.querySelector('#card-expandido p').innerHTML = conteudos[dia - 1];
+
+  const botao = document.getElementById('botao-realizado');
+  const concluido = localStorage.getItem(`dia-${dia}`) === 'true';
+
+  if (concluido) {
+    botao.textContent = '✅ Tarefa concluída';
+    botao.classList.remove('bg-green-600');
+    botao.classList.add('bg-gray-400');
+  } else {
+    botao.textContent = '✔ Marcar como realizado';
+    botao.classList.remove('bg-gray-400');
+    botao.classList.add('bg-green-600');
+  }
+}
+
+
+function marcarComoRealizado() {
+  if (!diaAtualExpandido) return;
+
+  const key = `dia-${diaAtualExpandido}`;
+  const jaConcluido = localStorage.getItem(key) === 'true';
+
+  if (jaConcluido) {
+    localStorage.removeItem(key);
+  } else {
+    localStorage.setItem(key, true);
+  }
+
+  mostrarConteudo(diaAtualExpandido); // atualiza visual do botão
+  marcarCardsConcluidos();
+  atualizarProgresso();
+}
+
+function destacarDiasAtrasados() {
+  for (let i = 1; i < diaHoje; i++) {
+    const card = document.getElementById(`dia-${i}`);
+    const concluido = localStorage.getItem(`dia-${i}`) === 'true';
+    if (!concluido) {
+      card.classList.add('border-2', 'border-red-500');
+    } else {
+      card.classList.remove('border-2', 'border-red-500');
+    }
+  }
+}
+
+function destacarRevisoesAgendadas() {
+  for (let i = 1; i <= 56; i++) {
+    const conteudo = conteudos[i - 1];
+    const card = document.getElementById(`dia-${i}`);
+    if (conteudo.includes('Revisão 7d') || conteudo.includes('Revisão 14d') || conteudo.includes('Revisão 21d')) {
+      const marcador = document.createElement('div');
+      marcador.className = "absolute bottom-2 right-2 text-yellow-400 text-lg";
+      marcador.textContent = '🔁';
+      card.appendChild(marcador);
+    }
+  }
+}
+
+    function marcarCardsConcluidos() {
+      for (let i = 1; i <= 56; i++) {
+        const card = document.getElementById(`dia-${i}`);
+        const check = document.getElementById(`check-${i}`);
+        if (localStorage.getItem(`dia-${i}`) === 'true') {
+          card.classList.add('bg-green-700');
+          check.classList.remove('hidden');
+        } else {
+          card.classList.remove('bg-green-700');
+          check.classList.add('hidden');
+        }
+      }
+    }
+
+    function atualizarProgresso() {
+      let concluidos = 0;
+      for (let i = 1; i <= 56; i++) {
+        if (localStorage.getItem(`dia-${i}`) === 'true') concluidos++;
+      }
+      const percentual = Math.round((concluidos / 56) * 100);
+      document.getElementById('progresso-geral').textContent = `Progresso: ${percentual}% concluído`;
+    }
+
+    function fecharCard() {
+      document.getElementById('overlay-card').classList.add('hidden');
+    }
+  </script>
+
+<!-- 3. Por fim, o script da revisão automática -->
+<script>
+  window.addEventListener('load', () => {
+    const conteudoHoje = conteudos[diaHoje - 1] || "";
+    const revisaoHoje = ["revisão 7d", "revisão 14d", "revisão 21d"];
+
+    const temRevisaoHoje = revisaoHoje.some(revisao =>
+      conteudoHoje.toLowerCase().includes(revisao)
+    );
+
+    if (temRevisaoHoje) {
+      mostrarConteudo(diaHoje);
+
+      setTimeout(() => {
+        const overlay = document.getElementById("overlay-card");
+        const card = document.getElementById("card-expandido");
+        const titulo = document.getElementById("titulo-expandido");
+
+        if (overlay && card && titulo) {
+          overlay.classList.add("animate-fadeIn");
+          card.classList.add("bg-yellow-100", "border", "border-yellow-300", "rounded-2xl", "shadow-2xl", "animate-slideUp");
+          titulo.classList.add("text-yellow-800", "text-3xl", "font-extrabold");
+          titulo.innerHTML = "🔁 Dia de Revisão";
+        }
+      }, 300);
+    }
+  });
+</script>
+
+<script>
+function atualizarProgresso() {
+  let concluídos = 0;
+  for (let i = 1; i <= 56; i++) {
+    if (localStorage.getItem(`dia-${i}`) === "true") {
+      concluídos++;
+    }
+  }
+  document.getElementById("progresso-contador").textContent = concluídos;
+}
+
+// Atualiza ao carregar a página e ao marcar um dia como realizado
+window.addEventListener("load", atualizarProgresso);
+document.addEventListener("mudou-conclusao", atualizarProgresso);
+</script>
+
+<script>
+function marcarPendencias() {
+  const diaHoje = parseInt(localStorage.getItem("dia-atual")) || 1;
+
+  for (let i = 1; i <= 56; i++) {
+    const card = document.querySelector(`[data-dia='${i}']`);
+    const feito = localStorage.getItem(`dia-${i}`) === "true";
+
+    if (card) {
+      if (!feito && i < diaHoje) {
+        card.classList.add("dia-pendente");
+      } else {
+        card.classList.remove("dia-pendente");
+      }
+    }
+  }
+}
+
+window.addEventListener("load", marcarPendencias);
+document.addEventListener("mudou-conclusao", marcarPendencias);
+</script>
+
+<script>
+function carregarChecklist(dia) {
+  document.getElementById('check-leitura').checked = localStorage.getItem(`leitura-${dia}`) === "true";
+  document.getElementById('check-questoes').checked = localStorage.getItem(`questoes-${dia}`) === "true";
+  document.getElementById('check-revisao').checked = localStorage.getItem(`revisao-${dia}`) === "true";
+  document.getElementById('notas-dia').value = localStorage.getItem(`notas-${dia}`) || "";
+}
+
+function salvarChecklist(dia) {
+  localStorage.setItem(`leitura-${dia}`, document.getElementById('check-leitura').checked);
+  localStorage.setItem(`questoes-${dia}`, document.getElementById('check-questoes').checked);
+  localStorage.setItem(`revisao-${dia}`, document.getElementById('check-revisao').checked);
+  localStorage.setItem(`notas-${dia}`, document.getElementById('notas-dia').value);
+}
+</script>
+
+<script>
+function filtrarRevisoesPendentes() {
+  const container = document.getElementById("container-dias");
+  const dias = container.querySelectorAll("[data-dia]");
+  dias.forEach((card, index) => {
+    const conteudo = conteudos[index]?.toLowerCase() || "";
+    const revisao = ["revisão 7d", "revisão 14d", "revisão 21d"];
+    const concluido = localStorage.getItem(`dia-${index + 1}`) === "true";
+
+    const ehRevisao = revisao.some(r => conteudo.includes(r));
+    if (ehRevisao && !concluido) {
+      card.classList.remove("hidden");
+    } else {
+      card.classList.add("hidden");
+    }
+  });
+}
+
+function resetarFiltro() {
+  const container = document.getElementById("container-dias");
+  const dias = container.querySelectorAll("[data-dia]");
+  dias.forEach(card => card.classList.remove("hidden"));
+}
+</script>
+
+<script>
+function destacarSimulados() {
+  const simulados = [7, 14, 21, 28, 35, 42, 49, 56];
+  simulados.forEach(dia => {
+    const card = document.querySelector(`[data-dia='${dia}']`);
+    if (card) {
+      card.classList.add("dia-simulado");
+      const titulo = card.querySelector("span");
+      if (titulo && !titulo.textContent.includes("📝")) {
+        titulo.textContent = `📝 Simulado • Dia ${dia}`;
+      }
+    }
+  });
+}
+
+window.addEventListener("load", destacarSimulados);
+</script>
+
+
+</body>
+
+</body>
+</html>
